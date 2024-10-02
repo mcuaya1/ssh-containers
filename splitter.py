@@ -144,7 +144,9 @@ def docker_container_shell(chan,transport):
         detach=True,
         tty=True,
         stdin_open=True,
-        name=transport.get_username()
+        name=transport.get_username(),
+        cpu_count=1,
+        mem_limit="700m",
     )
     print(f"Started Docker container: {container.id} for {transport.get_username()}")
 
@@ -213,12 +215,12 @@ def update_auth_dict(file):
             lines = f.readlines()
             for line in lines:
                 up = line.split(":")
-                print(up)
+                #print(up)
                 try:
                     AUTH_DICT[up[0].strip()] = up[1].strip()
                 except:
                     pass
-            print(AUTH_DICT)
+            #print(AUTH_DICT)
 
 if __name__ == "__main__":
     server = Server(auth_mode="auth-dict", auth_dict=AUTH_DICT)
