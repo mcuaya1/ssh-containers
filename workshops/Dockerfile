@@ -10,4 +10,6 @@ COPY password.txt /home/ian/
 
 RUN chmod 477 /home/ian
 
+
+WORKDIR /home/scott
 USER $USERNAME
