@@ -16,7 +16,12 @@ docker_client = docker.from_env()
 # setup logging
 paramiko.util.log_to_file("paramiko_server.log")
 
-host_key = paramiko.Ed25519Key.from_private_key_file(filename='/home/ubuntu/workshop-key')
+try:
+    host_key = paramiko.Ed25519Key.from_private_key_file(filename=f'{sys.argv[1]}')
+except Exception as e:
+    print("*** No host key found: " + str(e))
+    traceback.print_exc()
+    sys.exit(1)
 
 
 class Server(paramiko.ServerInterface):
@@ -207,8 +212,9 @@ def update_auth_dict(file):
             #print(AUTH_DICT)
 
 if __name__ == "__main__":
-    server = Server(auth_mode="auth-dict", auth_dict=AUTH_DICT)
-    threading.Thread(target=update_auth_dict,args=("auth.txt",)).start()
+    server = Server(auth_mode="no-auth")
+    #server = Server(auth_mode="auth-dict", auth_dict=AUTH_DICT)
+    #threading.Thread(target=update_auth_dict,args=("auth.txt",)).start()
     start_server(server, 2222)
 
 
