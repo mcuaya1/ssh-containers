@@ -1,0 +1,4 @@
+* Push update to github repo
+* Check access controls on people’s home directories
+* Setup logging sometime later on
+* Change website password

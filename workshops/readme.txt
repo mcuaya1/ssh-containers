@@ -1,0 +1,1 @@
+Welcome Scott! We at Citrus Genetics are so excited to have you on board the IT team! As you may already know, we are a new start up citrus company that specializes in cultivating only the finest and bestest citrus fruit around! As part of our IT team, your job is to ensure that our security is TOP notch and up to date! You will be reporting to Ian, the head IT administrator.
