@@ -25,4 +25,6 @@ RUN crontab /etc/cron.d/not_malware
 # Removing sudo message
 RUN touch /home/ping/.sudo_as_admin_successful
 
+WORKDIR /home/ping
+
 ENTRYPOINT cron -f
